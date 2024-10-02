@@ -1,0 +1,21 @@
+#PART1: CREATING A SCRIPT THAT RUNS DAILY 12NOON UTC TIME WHICH EXTRACTS AND LOADS REQUIRED INFORMATION FOR CURRENT LOCATION - KANSAS ----(rx_poc.sh)
+#year, month, day, current temperature, forecasted temperature
+
+touch rx_poc.log
+header=$(echo -e "year\tmonth\tday\tobs_temp\tfc_temp")
+echo $header>rx_poc.log
+#or use the below command
+#echo -e "year\tmonth\tday\tobs_temp\tfc_temp">rx_poc.log
+
+touch rx_poc.sh
+chmod +x rx_poc.sh
+
+#find the rx_poc.sh files in the files section, and edit the file with the code
+#run the rx_poc.sh shell script everyday 12noon UTC (which is 8AM CDT) which extracts the (year, month, day obs_temp and fc_temp)
+crontab -e
+0 8 * * * /home/project/rx_poc.sh >> /home/project/rx_poc.log
+#Save the file and quit the editor.
+#to list all the scheduled jobs, run the below command
+crontab -l
+
+cat rx_poc.log

@@ -1,0 +1,19 @@
+#PART2: CREATE A SCRIPT TO REPORT HISTORICAL FORECASTING ACCURACY ---- (fc_accuracy.sh)
+#Rather than writing the script to process all of the data at once, let's simplify by solving the problem for just one instance. Later you can modify the script to handle the general case of mupltiple days.
+
+touch historical_fc_accuracy.tsv
+echo -e "year\tmonth\tday\tobs_temp\tfc_temp\taccuracy\taccuracy_range" > historical_fc_accuracy.tsv
+
+touch fc_accuracy.sh
+chmod +x fc_accuracy.sh
+
+#Tip: Your weather report must have at least two days of data for this calulation to make sense.
+#find the fc_accuracy.sh files in the files section, and edit the file with the code
+#run the fc_accuracy.sh shell script with crontab expression as mentioned below and check the output
+crontab -e
+02 08 * * * /home/project/fc_accuracy.sh /home/project/rx_poc.log >> /home/project/historical_fc_accuracy.tsv
+#Save the file and quit the editor.
+#to list all the scheduled jobs, run the below command
+crontab -l
+
+cat historical_fc_accuracy.tsv

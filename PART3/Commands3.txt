@@ -1,0 +1,12 @@
+#PART3: 
+#Display the minimum and maximum absolute forecasting errors for the past week
+touch weekly_status.sh
+chmod +x weekly_status.sh
+touch scratch.txt
+touch week_fc_accuray.txt
+#find the weekly_status.sh files in the files section, and edit the file with the code
+#run the weekly_status.sh shell script with below command and check the output
+
+/home/project/weekly_status.sh /home/project/historical_fc_accuracy.tsv /home/project/scratch.txt >> /home/project/week_fc_accuray.txt
+
+cat week_fc_accuracy.txt
